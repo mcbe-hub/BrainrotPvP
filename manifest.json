@@ -1,0 +1,31 @@
+{
+    "format_version": 2,
+    "header": {
+        "name": "§l§bBrainrotPVP §8[§eBP§8]§r",
+        "description": "Behavior pack of §l§bBrainrotPVP",
+        "uuid": "b7d6dacd-03f4-47ff-b9ef-7062205907a1",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "min_engine_version": [
+            1,
+            21,
+            50
+        ]
+    },
+    "modules": [
+        {
+            "type": "scripts",
+            "language": "javascript",
+            "uuid": "644ef724-a8f3-4ea1-8192-d054df9722eb",
+            "version": [
+                1,
+                0,
+                0
+            ]
+        }
+    ],
+    "dependencies": []
+}
