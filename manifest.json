@@ -1,31 +1,64 @@
+
 {
-    "format_version": 2,
-    "header": {
-        "name": "§l§bBrainrotPVP §8[§eBP§8]§r",
-        "description": "Behavior pack of §l§bBrainrotPVP",
-        "uuid": "b7d6dacd-03f4-47ff-b9ef-7062205907a1",
-        "version": [
-            1,
-            0,
-            0
-        ],
-        "min_engine_version": [
-            1,
-            21,
-            50
-        ]
-    },
-    "modules": [
-        {
-            "type": "scripts",
-            "language": "javascript",
-            "uuid": "644ef724-a8f3-4ea1-8192-d054df9722eb",
-            "version": [
-                1,
-                0,
-                0
-            ]
-        }
-    ],
-    "dependencies": []
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"LaylaBB"
+		],
+		"generated_with": {
+			"bridge": [
+				"2.7.42"
+			],
+			"dash": [
+				"0.11.7"
+			]
+		}
+	},
+	"header": {
+		"name": "Skibidi Brainrotst",
+		"description": "",
+		"min_engine_version": [
+			1,
+			21,
+			0
+		],
+		"uuid": "25155111-8e72-43c1-a248-10e9eb7ef85d",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "a5abf32f-1a4b-4c20-bc01-68ec39653ce7",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"type": "script",
+			"language": "javascript",
+			"uuid": "960bee98-176c-40a2-a92b-ac7faff5e7b4",
+			"entry": "scripts/main.js",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"module_name": "@minecraft/server",
+			"version": "1.17.0-beta"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "1.4.0-beta"
+		}
+	]
 }
