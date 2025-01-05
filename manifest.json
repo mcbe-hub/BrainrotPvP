@@ -1,31 +1,34 @@
 {
     "format_version": 2,
+    "metadata": {
+        "authors": [
+            "zelisce"
+        ]
+    },
     "header": {
-        "name": "§l§bBrainrotPVP §8[§eBP§8]§r",
-        "description": "Behavior pack of §l§bBrainrotPVP",
-        "uuid": "b7d6dacd-03f4-47ff-b9ef-7062205907a1",
-        "version": [
-            1,
-            0,
-            0
-        ],
+        "name": "§l§bPeterPVP §r§8[§eRP§8]§r§b",
+        "description": "§8» §6Resource pack made §bfor PeterPVP.§r§b",
+        "uuid": "2dc346fb-34f9-44b4-adaf-203509f15b2e",
         "min_engine_version": [
             1,
             21,
             50
+        ],
+        "version": [
+            1,
+            0,
+            0
         ]
     },
     "modules": [
         {
-            "type": "scripts",
-            "language": "javascript",
-            "uuid": "644ef724-a8f3-4ea1-8192-d054df9722eb",
+            "type": "resources",
+            "uuid": "ebe61de5-7083-49d7-bd24-5831ddeab5ab",
             "version": [
                 1,
                 0,
                 0
             ]
         }
-    ],
-    "dependencies": []
+    ]
 }

@@ -1,0 +1,48 @@
+{
+    "root_panel": {
+        "modifications": [
+            {
+                "array_name": "controls",
+                "operation": "insert_front",
+                "value": [
+                    {
+                        "clip_frame@hud.clip_frame": {}
+                    }
+                ]
+            }
+        ]
+    },
+    "clip_frame": {
+        "type": "panel",
+        "anchor_from": "right_middle",
+        "anchor_to": "right_middle",
+        "size": [
+            180,
+            320
+        ],
+        "controls": [
+            {
+                "clip_rendering": {
+                    "type": "image",
+                    "texture": "textures/ui/familyguyclip1/spritesheet",
+                    "uv_size": [
+                        90,
+                        160
+                    ],
+                    "uv": "@hud.image_uv_animation"
+                }
+            }
+        ]
+    },
+    "image_uv_animation": {
+        "anim_type": "flip_book",
+        "initial_uv": [
+            0,
+            0
+        ],
+        "frame_count": 95,
+        "frame_step": 90,
+        "fps": 12,
+        "easing": "linear"
+    }
+}
