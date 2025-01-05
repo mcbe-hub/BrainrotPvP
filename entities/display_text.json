@@ -36,7 +36,6 @@
 				]
 			},
 			"minecraft:physics": {
-				"has_gravity": true,
 				"has_collision": true
 			},
 			"minecraft:damage_sensor": {

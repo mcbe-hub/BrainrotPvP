@@ -29,56 +29,16 @@ const defaultValues: ({
             value: 600
         },
         {
-            identifier: "haste",
-            value: 0
-        },
-        {
-            identifier: "pickaxe",
-            value: 0
-        },
-        {
-            identifier: "efficiency",
-            value: 0
-        },
-        {
-            identifier: "sharpness",
-            value: 0
-        },
-        {
-            identifier: "protection",
-            value: 0
-        },
-        {
-            identifier: "unbreaking",
-            value: 0
-        },
-        {
-            identifier: "power",
-            value: 0
-        },
-        {
-            identifier: "fireAspect",
-            value: 0
-        },
-        {
-            identifier: "blink",
-            value: false
-        },
-        {
-            identifier: "shooter",
-            value: false
-        },
-        {
-            identifier: "leap",
-            value: false
-        },
-        {
             identifier: "playtime",
             value: 0
         },
         {
             identifier: "dailyClaimed",
             value: false
+        },
+        {
+            identifier: "rank",
+            value: "beta"
         }
     ];
 
