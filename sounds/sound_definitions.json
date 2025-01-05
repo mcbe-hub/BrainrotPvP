@@ -1,0 +1,13 @@
+{
+    "format_version": "1.14.0",
+    "sound_definitions": {
+        "spawn.title_theme": {
+            "category": "neutral",
+            "max_distance": 0.7,
+            "min_distance": 0.5,
+            "sounds": [
+                "sounds/title_theme"
+            ]
+        }
+    }
+}
