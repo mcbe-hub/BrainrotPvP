@@ -2,12 +2,13 @@
     "format_version": 2,
     "metadata": {
         "authors": [
-            "zelisce"
+            "zelisce",
+            "LaylaBB"
         ]
     },
     "header": {
-        "name": "§l§bPeterPVP §r§8[§eRP§8]§r§b",
-        "description": "§8» §6Resource pack made §bfor PeterPVP.§r§b",
+        "name": "§l§bBrainRotPVP §r§8[§eRP§8]§r§b",
+        "description": "§8» §6Resource pack made §bfor BrainRotPVP.§r§b",
         "uuid": "2dc346fb-34f9-44b4-adaf-203509f15b2e",
         "min_engine_version": [
             1,

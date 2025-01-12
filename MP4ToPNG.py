@@ -3,7 +3,7 @@ import os
 import json
 import numpy as np
 
-def extract_and_generate_spritesheet(mp4_file_path, output_folder, frame_width=90, frame_height=160, fps=10):
+def extract_and_generate_spritesheet(mp4_file_path, output_folder, frame_width=234, frame_height=30, fps=10):
     if not os.path.isfile(mp4_file_path):
         print(f"File not found: {mp4_file_path}")
         return
@@ -24,7 +24,20 @@ def extract_and_generate_spritesheet(mp4_file_path, output_folder, frame_width=9
 
     while success:
         if frame_count % frame_interval == 0:
-            resized_frame = cv2.resize(frame, (frame_width, frame_height))
+            h, w, _ = frame.shape
+            aspect_ratio = w / h
+            target_aspect_ratio = frame_width / frame_height
+
+            if aspect_ratio > target_aspect_ratio:
+                new_width = int(h * target_aspect_ratio)
+                x_start = (w - new_width) // 2
+                cropped_frame = frame[:, x_start:x_start + new_width]
+            else:
+                new_height = int(w / target_aspect_ratio)
+                y_start = (h - new_height) // 2
+                cropped_frame = frame[y_start:y_start + new_height, :]
+
+            resized_frame = cv2.resize(cropped_frame, (frame_width, frame_height))
             frames.append(resized_frame)
         frame_count += 1
         success, frame = video_capture.read()
@@ -59,6 +72,6 @@ def extract_and_generate_spritesheet(mp4_file_path, output_folder, frame_width=9
     print(f"Generated sprite sheet and JSON in {output_folder}")
     print(f"Total frames created: {total_frames}")
 
-mp4_file = "clips/familyguyclip1.mp4"
-output_dir = "textures/ui/familyguyclip1"
-extract_and_generate_spritesheet(mp4_file, output_dir, fps=12)
+mp4_file = "BrainrotPvP/clips/banner.mp4"
+output_dir = "BrainrotPvP/textures/ui/banner"
+extract_and_generate_spritesheet(mp4_file, output_dir, fps=10)
