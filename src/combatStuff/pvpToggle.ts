@@ -9,3 +9,7 @@ export function pvpOff(player: server.Player) {
     player.triggerEvent("rot:pvpoff")
     player.setDynamicProperty("pvp", false)
 }
+
+export function isPvP(player: server.Player): boolean {
+    return player.getDynamicProperty("pvp") as boolean
+}

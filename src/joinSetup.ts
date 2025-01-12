@@ -1,4 +1,6 @@
-import { Player } from '@minecraft/server'
+import { Player, EquipmentSlot } from '@minecraft/server'
+import { isCombatLog } from 'combatStuff/combatLog';
+import { pvpOff } from 'combatStuff/pvpToggle';
 
 const defaultValues: ({
     identifier: string,
@@ -47,6 +49,16 @@ export function joinSetup(player: Player) {
         if (player.getDynamicProperty(identifier) !== undefined) continue;
         player.setDynamicProperty(identifier, value);
     };
-
-    player.setDynamicProperty("pvp", false);
+    if (isCombatLog(player)) {
+        player.sendMessage('§cClear za logout podczas walki!')
+        player.getComponent("inventory").container.clearAll()
+        const equipment = player.getComponent("equippable")
+        for (const slot of [EquipmentSlot.Chest, EquipmentSlot.Feet, EquipmentSlot.Head, EquipmentSlot.Legs, EquipmentSlot.Offhand]) {
+            equipment.setEquipment(slot, null)
+        }
+        player.setDynamicProperty("combatLog", 600)
+        // @ts-ignore
+        const cursor = player.getComponent("cursor_inventory").clear()
+    }
+    pvpOff(player);
 };

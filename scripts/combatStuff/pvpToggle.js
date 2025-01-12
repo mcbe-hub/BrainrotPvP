@@ -6,3 +6,6 @@ export function pvpOff(player) {
     player.triggerEvent("rot:pvpoff");
     player.setDynamicProperty("pvp", false);
 }
+export function isPvP(player) {
+    return player.getDynamicProperty("pvp");
+}

@@ -17,6 +17,7 @@ export function postKillElo(winner: Player, loser: Player) {
     // Set new Elo ratings
     winner.setDynamicProperty("elo", winnerNewElo);
     loser.setDynamicProperty("elo", loserNewElo);
+    return { winnerNewElo, loserNewElo };
 }
 
 export function getEloString(elo: number) {
