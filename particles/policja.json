@@ -1,0 +1,50 @@
+{
+    "format_version": "1.10.0",
+    "particle_effect": {
+        "description": {
+            "identifier": "rot:policja",
+            "basic_render_parameters": {
+                "material": "particles_alpha",
+                "texture": "textures/particle/policja"
+            }
+        },
+        "components": {
+            "minecraft:emitter_rate_instant": {
+                "num_particles": 1
+            },
+            "minecraft:emitter_lifetime_looping": {
+                "active_time": 1
+            },
+            "minecraft:emitter_shape_point": {},
+            "minecraft:particle_lifetime_expression": {
+                "max_lifetime": 5
+            },
+            "minecraft:particle_motion_parametric": {
+                "relative_position": [
+                    "math.sin((v.particle_age/v.particle_lifetime)*360)*160",
+                    0,
+                    "math.cos((v.particle_age/v.particle_lifetime)*360)*160"
+                ]
+            },
+            "minecraft:particle_appearance_billboard": {
+                "size": [
+                    "214/5",
+                    "45/5"
+                ],
+                "facing_camera_mode": "rotate_xyz",
+                "uv": {
+                    "texture_width": 214,
+                    "texture_height": 45,
+                    "uv": [
+                        0,
+                        0
+                    ],
+                    "uv_size": [
+                        214,
+                        45
+                    ]
+                }
+            }
+        }
+    }
+}
