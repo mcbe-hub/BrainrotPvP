@@ -3,6 +3,7 @@ import { buyShopUi } from 'buyShop';
 import { allInFlipUi } from 'gambling/allInFlip';
 import { startGame } from 'gambling/blackjack';
 import { startDiceGame } from 'gambling/dice';
+import { openLootBox } from 'gambling/lootbox';
 import { sellShopUi } from 'sellShop';
 
 // Create a map to store button locations and their corresponding functions
@@ -30,8 +31,26 @@ export function setupButtonSystem() {
         }
     });
     setupShopButtons()
-    registerButton(8000, 100, 8000, (player) => {
-        allInFlipUi(player) 
+    registerButton(7998, 101, 7985, (player) => {
+        startGame(player)
+    })
+    registerButton(7998, 101, 7984, (player) => {
+        startGame(player) 
+    })
+    registerButton(7992, 101, 7995, (player) => {
+        startDiceGame(player)
+    })
+    registerButton(7992, 101, 7984, (player) => {
+        startDiceGame(player)
+    })
+    registerButton(7993, 101, 7984, (player) => {
+        startDiceGame(player)
+    })
+    registerButton(7982, 101, 7994, (player) => {
+        allInFlipUi(player)
+    })
+    registerButton(7979, 101, 7992, (player) => {
+        openLootBox(player)
     })
 }
 

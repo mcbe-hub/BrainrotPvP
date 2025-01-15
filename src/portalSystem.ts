@@ -36,6 +36,22 @@ const portals: Portal[] = [
         handler: (player) => {
             player.teleport(spawnCenter)
         }
+    },
+    {
+        id: "casino",
+        blockVolume: new server.BlockVolume({ x: 30, y: 50, z: 6 }, { x: 23, y: 56, z: -6 }),
+        handler: (player) => {
+            player.teleport({x: 8000, y: 102, z: 8006})
+        }
+    },
+    {
+        id: "xp",
+        blockVolume: new server.BlockVolume({ x: -2050, y: 150, z: -2050 }, { x: -1950, y: 50, z: -1950 }),
+        handler: (player) => {
+            if(server.system.currentTick % 20 == 0) {
+            player.addLevels(15)
+            }
+        }
     }
 ]
 
@@ -64,7 +80,6 @@ function boxPvP(player: server.Player) {
             const block = dimension.getBlock({ x: x, y: i, z: z })
             pvpOn(player)
             const blockBelow = block.below()
-                    // @ts-ignore
             if (block.isAir && blockBelow.isSolid) {
                 player.teleport({ x: x, y: i, z: z })
                 check = true

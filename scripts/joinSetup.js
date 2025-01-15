@@ -46,7 +46,7 @@ export function joinSetup(player) {
         player.setDynamicProperty(identifier, value);
     }
     ;
-    if (isCombatLog(player)) {
+    if (player.getDynamicProperty("antylog") != undefined || isCombatLog(player)) {
         player.sendMessage('§cClear za logout podczas walki!');
         player.getComponent("inventory").container.clearAll();
         const equipment = player.getComponent("equippable");

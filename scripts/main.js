@@ -12,6 +12,7 @@ import { setupStarterKits } from 'starterKit';
 import { setupButtonSystem } from 'buttonSystem';
 import { pvpOff } from 'combatStuff/pvpToggle';
 import { setupCombatEvents } from 'combatStuff/events';
+import { setupTipMessages } from 'tipMessages';
 export const spawnCenter = { x: 0.5, y: 51, z: 0.5 };
 const world = server.world;
 server.system.runInterval(() => {
@@ -32,6 +33,7 @@ world.afterEvents.worldInitialize.subscribe(data => {
     setupStarterKits();
     setupButtonSystem();
     setupCombatEvents();
+    setupTipMessages();
 });
 const PLAYERS = world.getAllPlayers();
 world.afterEvents.playerSpawn.subscribe(data => {
@@ -53,7 +55,7 @@ world.beforeEvents.playerLeave.subscribe(data => {
 });
 export function teleportToSpawn(player) {
     if (isCombatLog(player)) {
-        player.sendMessage("§Nie możesz teleportować się do spawnu podczas walki!");
+        player.sendMessage("§cNie możesz teleportować się do spawnu podczas walki!");
     }
     else {
         player.teleport(spawnCenter);

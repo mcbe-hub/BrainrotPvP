@@ -5,6 +5,8 @@ import { timeLeftUntilDate } from "utils/timeUntilDate"
 import { getEloString } from "eloSystem"
 import { teleportToSpawn } from "main"
 import { modMenu } from "modStuff"
+import { ChestFormData } from "chestForm/forms"
+import { playerExchangeUi } from "playerMarket"
 const world = server.world
 const system = server.system
 
@@ -25,7 +27,19 @@ world.beforeEvents.chatSend.subscribe(data => {
                     teleportToSpawn(player)
                 })
                 break;
-
+            case "!refresh":
+                if(isAdmin(player)){
+                    world.getDynamicPropertyIds().forEach(id => {
+                        world.setDynamicProperty(id, undefined)
+                    })
+                }
+            break;
+            case "!rynek":
+                system.run(() => {
+                    playerExchangeUi(player)
+                })
+                break;
+            break;
             default: player.sendMessage("§cNie ma takiej komendy!")
         }
     } else {
@@ -50,7 +64,7 @@ world.beforeEvents.chatSend.subscribe(data => {
     }
 })
 
-export async function forceShow(form: ModalFormData | ActionFormData, player: server.Player): Promise<ActionFormResponse | ModalFormResponse | null> {
+export async function forceShow(form: ModalFormData | ActionFormData | ChestFormData, player: server.Player): Promise<ActionFormResponse | ModalFormResponse | null> {
     const res = await form.show(player)
     if (res.cancelationReason !== "UserBusy" || !player.isValid()) return res as ActionFormResponse | ModalFormResponse
     return await forceShow(form, player)

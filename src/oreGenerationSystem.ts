@@ -1,13 +1,19 @@
 import * as server from '@minecraft/server'
 import * as exp from 'constants'
+import { workerData } from 'worker_threads'
 
 const overworld = server.world.getDimension("overworld")
 
 interface Generator {
-
     blockVolume: server.BlockVolume
     blocks: string[]
 }
+
+interface RareGenerator extends Generator {
+    name: string
+}
+
+const rareGeneratorCooldown = 2400
 
 const generators: Generator[] = [
     {
@@ -60,7 +66,26 @@ const generators: Generator[] = [
     }    
 ]
 
+const rareGenerators: RareGenerator[] = [
+    {
+        name: "Peter Griffin",
+        blockVolume: new server.BlockVolume({x: 2082, y: -30, z: 1976}, {x: 2083, y: -28, z: 1978}),
+        blocks: ["minecraft:ancient_debris"]
+    },
+    {
+        name: "Skibidi Toilet",
+        blockVolume: new server.BlockVolume({x: 1942, y: -56, z: 1945}, {x: 1943, y: -53, z: 1947}),
+        blocks: ["minecraft:ancient_debris"]
+    },
+    {
+        name: "Pixel Toilet",
+        blockVolume: new server.BlockVolume({x: 2019, y: -28, z: 1903}, {x: 2018, y: -26, z: 1901}),
+        blocks: ["minecraft:ancient_debris"]
+    }
+]
+
 export function setupGenerators(){
+    setupRareGenerators()
     for(const generator of generators){
     server.system.runInterval(() => {
         let i = 0
@@ -72,4 +97,19 @@ export function setupGenerators(){
         }
     }, Math.floor(Math.random() * 401) + 400)
 }
+}
+
+function setupRareGenerators(){
+    server.system.runInterval(() => {
+        rareGenerators.sort(() => Math.random() - 0.5)
+        for(let i = 0; i< rareGenerators.length; i++){
+            const generator = rareGenerators[i]
+            server.system.runTimeout(() => {
+                server.world.sendMessage(`Pojawiła się ruda §6§l${generator.name}`)
+            for(const block of generator.blockVolume.getBlockLocationIterator()){
+                    overworld.setBlockType(block, generator.blocks[Math.floor(Math.random() * generator.blocks.length)])
+                }
+            }, i*rareGeneratorCooldown)
+        }
+    }, rareGeneratorCooldown*rareGenerators.length)
 }

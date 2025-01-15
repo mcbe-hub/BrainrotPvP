@@ -5,6 +5,7 @@ const items = [
     { name: 'Emerald', id: 'minecraft:emerald', price: 20, icon: 'textures/items/emerald' },
     { name: 'Żelazo', id: 'minecraft:iron_ingot', price: 5, icon: 'textures/items/iron_ingot' },
     { name: 'Złoto', id: 'minecraft:gold_ingot', price: 10, icon: 'textures/items/gold_ingot' },
+    { name: 'Netherite Scrap', id: 'minecraft:netherite_scrap', price: 5000, icon: 'textures/items/netherite_scrap' },
 ];
 export function sellShopUi(player) {
     const ui = new ActionFormData()

@@ -4,6 +4,7 @@ import { timeLeftUntilDate } from "utils/timeUntilDate";
 import { getEloString } from "eloSystem";
 import { teleportToSpawn } from "main";
 import { modMenu } from "modStuff";
+import { playerExchangeUi } from "playerMarket";
 const world = server.world;
 const system = server.system;
 world.beforeEvents.chatSend.subscribe(data => {
@@ -23,6 +24,19 @@ world.beforeEvents.chatSend.subscribe(data => {
                 system.run(() => {
                     teleportToSpawn(player);
                 });
+                break;
+            case "!refresh":
+                if (isAdmin(player)) {
+                    world.getDynamicPropertyIds().forEach(id => {
+                        world.setDynamicProperty(id, undefined);
+                    });
+                }
+                break;
+            case "!rynek":
+                system.run(() => {
+                    playerExchangeUi(player);
+                });
+                break;
                 break;
             default: player.sendMessage("§cNie ma takiej komendy!");
         }
